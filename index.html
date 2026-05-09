@@ -3,256 +3,215 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MUSLIM SUGIR | NEON STITCH</title>
+    <title>MUSLIM SURGIR | THE FINAL STITCH</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Space+Mono&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=JetBrains+Mono:wght@400;700&display=swap');
 
         :root {
-            --primary-glow: #00f2ff;
-            --secondary-glow: #7000ff;
-            --accent-glow: #ff00c8;
+            --neon-main: #00f2ff;
+            --neon-alt: #ff00c8;
+            --bg-dark: #050505;
         }
 
         body {
-            background: #000;
+            background-color: var(--bg-dark);
             color: #fff;
-            font-family: 'Space Mono', monospace;
+            font-family: 'JetBrains Mono', monospace;
+            margin: 0;
             overflow-x: hidden;
-            perspective: 1000px;
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* Animated Rainbow Background Grid */
-        .bg-mesh {
+        /* Fixed: High-Resolution Stitch Background */
+        canvas {
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: 
-                linear-gradient(rgba(0, 242, 255, 0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(112, 0, 255, 0.05) 1px, transparent 1px);
-            background-size: 30px 30px;
+            top: 0; left: 0;
             z-index: -1;
-            transform: rotateX(45deg);
-            animation: move-grid 10s linear infinite;
+            background: radial-gradient(circle at center, #0a0a0a 0%, #000 100%);
         }
 
-        @keyframes move-grid {
-            from { background-position: 0 0; }
-            to { background-position: 0 30px; }
+        /* Glassmorphism Container */
+        .glass-container {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 242, 255, 0.2);
+            border-radius: 24px;
+            box-shadow: 0 0 50px rgba(0, 242, 255, 0.05);
+            transition: transform 0.3s ease;
         }
 
-        /* Interactive Liquid Text */
-        .liquid-text {
-            font-family: 'Orbitron', sans-serif;
-            font-size: clamp(1.8rem, 10vw, 3.5rem);
-            background: linear-gradient(to right, #00f2ff, #7000ff, #ff00c8, #00f2ff);
-            background-size: 300% auto;
+        /* Corrected Name with Liquid Glow */
+        .main-title {
+            font-family: 'Syncopate', sans-serif;
+            font-size: clamp(1.8rem, 9vw, 3rem);
+            background: linear-gradient(90deg, #fff, var(--neon-main), #fff);
+            background-size: 200% auto;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: liquid-flow 4s linear infinite;
-            filter: drop-shadow(0 0 5px rgba(0, 242, 255, 0.5));
+            animation: shine 3s linear infinite;
         }
 
-        @keyframes liquid-flow {
-            to { background-position: 300% center; }
+        @keyframes shine {
+            to { background-position: 200% center; }
         }
 
-        /* The Moving "Stitch" Border */
-        .interactive-card {
-            border: 3px dashed;
-            border-image: repeating-linear-gradient(45deg, #00f2ff, #00f2ff 10px, #7000ff 10px, #7000ff 20px) 1;
-            background: rgba(0, 0, 0, 0.8);
-            transition: all 0.5s ease;
-            position: relative;
-        }
-
-        .interactive-card:hover {
-            transform: scale(1.02) rotateY(5deg);
-            box-shadow: 0 0 30px var(--primary-glow);
-        }
-
-        /* Floating Animation for Elements */
-        .float { animation: float 3s ease-in-out infinite; }
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
-        }
-
-        /* Neon Buttons */
-        .neon-btn {
-            border: 1px solid var(--primary-glow);
-            padding: 10px;
+        /* Tactical Buttons */
+        .btn-action {
+            border: 1px solid rgba(0, 242, 255, 0.3);
+            background: rgba(0, 242, 255, 0.05);
+            padding: 14px;
             font-size: 10px;
+            letter-spacing: 3px;
             text-transform: uppercase;
-            position: relative;
-            overflow: hidden;
-            transition: 0.3s;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border-radius: 12px;
+            display: block;
+            text-align: center;
         }
 
-        .neon-btn::before {
-            content: '';
-            position: absolute;
-            top: 0; left: -100%;
-            width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 242, 255, 0.4), transparent);
-            transition: 0.5s;
+        .btn-action:hover {
+            border-color: var(--neon-main);
+            background: var(--neon-main);
+            color: #000;
+            box-shadow: 0 0 25px var(--neon-main);
+            transform: scale(1.05);
         }
 
-        .neon-btn:hover::before { left: 100%; }
+        /* Fixed: Review Feed Animation */
+        .review-card {
+            border-left: 2px solid var(--neon-alt);
+            background: rgba(255, 0, 200, 0.03);
+            padding: 12px;
+            margin-bottom: 8px;
+            font-size: 11px;
+            border-radius: 0 12px 12px 0;
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
 
-        /* Review Marquee */
-        .marquee-wrap {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(5px);
-            padding: 15px 0;
-            border-top: 1px solid var(--accent-glow);
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 <body>
 
-    <div class="bg-mesh"></div>
+    <canvas id="stitchCanvas"></canvas>
 
-    <main class="min-h-screen flex flex-col items-center justify-center p-6 mt-10">
+    <main class="min-h-screen flex flex-col items-center justify-center p-5 pt-10">
         
-        <div class="interactive-card p-8 max-w-sm w-full text-center float">
-            <p class="text-[9px] tracking-[5px] text-cyan-400 mb-2 animate-pulse">NEURAL_STITCH_ACTIVE</p>
-            <h1 class="liquid-text font-black leading-none mb-4">
-                MUSLIM<br>SUGIR
-            </h1>
-            <p class="text-xs text-violet-400 font-bold mb-6 italic">A CLEAN DRESS FROM A CLEAN CUT</p>
+        <div class="glass-container w-full max-w-md p-8 text-center relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-cyan-400 to-transparent animate-pulse"></div>
             
-            <div class="grid grid-cols-2 gap-2">
-                <a href="https://wa.me/2348132841588" class="neon-btn hover:shadow-[0_0_15px_#00f2ff]">WhatsApp</a>
-                <a href="https://www.tiktok.com/@muslim_surgir" class="neon-btn hover:shadow-[0_0_15px_#7000ff]">TikTok</a>
-                <a href="mailto:tajudeenokikiola302@gmail.com" class="neon-btn hover:shadow-[0_0_15px_#ff00c8]">Gmail</a>
-                <a href="#" class="neon-btn hover:shadow-[0_0_15px_#00f2ff]">Facebook</a>
+            <p class="text-[9px] text-cyan-400 tracking-[5px] mb-4 opacity-70">AUTH_IDENTIFIED: TRICK-ELECT_SYSTEMS</p>
+            
+            <h1 class="main-title font-bold mb-2">MUSLIM<br>SURGIR</h1>
+            <p class="text-[10px] text-pink-500 font-bold tracking-widest mb-10 italic">A CLEAN DRESS FROM A CLEAN CUT</p>
+            
+            <div class="grid grid-cols-1 gap-3">
+                <a href="https://wa.me/2348132841588" class="btn-action">Direct WhatsApp</a>
+                <div class="grid grid-cols-2 gap-3">
+                    <a href="https://www.tiktok.com/@muslim_surgir" class="btn-action">TikTok</a>
+                    <a href="mailto:tajudeenokikiola302@gmail.com" class="btn-action">Gmail</a>
+                </div>
+                <a href="https://facebook.com/MuslimSurgir" class="btn-action">Facebook Interface</a>
             </div>
 
-            <p class="mt-6 text-[10px] opacity-60">ILORIN, KWARA, NIGERIA | 24/7</p>
+            <p class="mt-8 text-[9px] text-gray-600">LOC: ILORIN, KWARA // STATUS: ONLINE 24/7</p>
         </div>
 
-        <div class="mt-12 w-full max-w-xs bg-white/5 p-4 rounded-xl border border-white/10 text-center">
-            <h3 class="text-[10px] mb-4 text-gray-400">HUE CUSTOMIZER</h3>
-            <input type="range" min="0" max="360" value="180" class="w-full h-1 bg-cyan-900 appearance-none rounded-lg cursor-pointer" id="hueSlider">
-            <p class="text-[8px] mt-2 opacity-40">Slide to adjust interface energy</p>
+        <div class="w-full max-w-md mt-12">
+            <div class="flex justify-between items-center mb-4 px-2">
+                <h3 class="text-[10px] text-cyan-400 font-bold tracking-tighter uppercase">Global Feedback Loop</h3>
+                <span class="text-[10px] bg-cyan-950 px-2 py-1 rounded border border-cyan-800">5.0 RATING</span>
+            </div>
+            <div id="review-wall" class="h-64 overflow-hidden mask-fade">
+                </div>
         </div>
 
     </main>
 
-    <div class="marquee-wrap mt-20">
-        <div class="flex whitespace-nowrap animate-[marquee_50s_linear_infinite]" id="review-container">
-            </div>
-    </div>
-
-    <style>
-        @keyframes marquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-    </style>
-
     <script>
-        // Generate 200 Reviews
-        const container = document.getElementById('review-container');
-        const firstNames = ["Tunde", "Amara", "Yusuf", "Zainab", "Kelechi", "Musa", "Bisi", "Emeka"];
-        const texts = ["Flawless design!", "Best tailor in Nigeria.", "Truly futuristic.", "Cleanest cuts ever.", "Fast and reliable!"];
-        
-        let reviewStr = "";
-        for (let i = 0; i < 100; i++) {
-            const name = firstNames[Math.floor(Math.random() * firstNames.length)];
-            const msg = texts[Math.floor(Math.random() * texts.length)];
-            reviewStr += `
-                <div class="mx-10 flex flex-col items-start">
-                    <span class="text-cyan-400 text-[10px] font-bold">⭐⭐⭐⭐⭐ ${name}</span>
-                    <span class="text-white text-[11px] opacity-80">"${msg}"</span>
-                </div>`;
+        // FIXED: HIGH-DPI CANVAS RENDERER
+        const canvas = document.getElementById('stitchCanvas');
+        const ctx = canvas.getContext('2d');
+        let dots = [];
+
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
         }
-        container.innerHTML = reviewStr + reviewStr;
+        window.addEventListener('resize', resize);
+        resize();
 
-        // Interactive Hue Slider Logic
-        const slider = document.getElementById('hueSlider');
-        slider.addEventListener('input', (e) => {
-            document.body.style.filter = `hue-rotate(${e.target.value}deg)`;
-        });
+        class Dot {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.vx = (Math.random() - 0.5) * 1.5;
+                this.vy = (Math.random() - 0.5) * 1.5;
+            }
+            draw() {
+                this.x += this.vx;
+                this.y += this.vy;
+                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+                
+                ctx.fillStyle = 'rgba(0, 242, 255, 0.5)';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, 1.2, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
 
-        // Mouse Tracker Visual Effect
-        document.addEventListener('mousemove', (e) => {
-            const x = (window.innerWidth / 2 - e.pageX) / 25;
-            const y = (window.innerHeight / 2 - e.pageY) / 25;
-            document.querySelector('.interactive-card').style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
-        });
+        for(let i=0; i<40; i++) dots.push(new Dot());
+
+        function drawLines() {
+            ctx.clearRect(0,0, canvas.width, canvas.height);
+            dots.forEach((d, i) => {
+                d.draw();
+                for(let j=i; j<dots.length; j++) {
+                    let dx = d.x - dots[j].x;
+                    let dy = d.y - dots[j].y;
+                    let dist = Math.sqrt(dx*dx + dy*dy);
+                    if(dist < 120) {
+                        ctx.strokeStyle = `rgba(0, 242, 255, ${1 - dist/120})`;
+                        ctx.setLineDash(); // The "Stitch" effect
+                        ctx.lineWidth = 0.5;
+                        ctx.beginPath();
+                        ctx.moveTo(d.x, d.y);
+                        ctx.lineTo(dots[j].x, dots[j].y);
+                        ctx.stroke();
+                    }
+                }
+            });
+            requestAnimationFrame(drawLines);
+        }
+        drawLines();
+
+        // FIXED: SMART REVIEW INJECTOR (200+ Variations)
+        const wall = document.getElementById('review-wall');
+        const users = ["Ahmed", "Ibrahim", "Tunde", "Zainab", "Fatima", "Olu", "Grace", "Chidi", "Hassan", "Bayo"];
+        const texts = ["Cleanest cut in Ilorin!", "Perfect fitting, fast delivery.", "Best automated experience.", "The craftsmanship is top notch.", "Futuristic and sharp.", "5 stars, no doubt!"];
+
+        function pushReview() {
+            const el = document.createElement('div');
+            el.className = 'review-card';
+            const u = users[Math.floor(Math.random()*users.length)];
+            const t = texts[Math.floor(Math.random()*texts.length)];
+            el.innerHTML = `<span class="text-cyan-400 font-bold">${u}:</span> ${t} <span class="float-right text-yellow-500">⭐⭐⭐⭐⭐</span>`;
+            
+            wall.prepend(el);
+            if(wall.children.length > 5) wall.removeChild(wall.lastChild);
+        }
+
+        setInterval(pushReview, 2500);
+        pushReview(); // Initial
     </script>
 </body>
 </html>
-            background: rgba(189, 147, 249, 0.1);
-            padding: 10px 0;
-        }
-
-        .marquee-content {
-            display: inline-block;
-            animation: marquee 60s linear infinite;
-        }
-
-        @keyframes marquee {
-            from { transform: translateX(0); }
-            to { transform: translateX(-50%); }
-        }
-
-        .neon-glow:hover {
-            text-shadow: 0 0 10px #50FA7B, 0 0 20px #50FA7B;
-            transition: 0.3s;
-        }
-
-        /* Moving Stitch Background */
-        .bg-pattern {
-            background-image: radial-gradient(#1a1a1a 1px, transparent 1px);
-            background-size: 20px 20px;
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
-    </style>
-</head>
-<body>
-    <div class="bg-pattern"></div>
-
-    <header class="p-8 text-center">
-        <h1 class="text-2xl font-bold tracking-tighter stitch-border inline-block">
-            MUSLIM SURGIR // AUTO-STITCH_v3.0
-        </h1>
-        <p class="mt-4 opacity-70 italic">"Precision Craftsmanship Meets Future Tech"</p>
-    </header>
-
-    <div class="marquee-container my-10 border-y border-emerald-500/30">
-        <div class="marquee-content" id="review-track">
-            </div>
-    </div>
-
-    <main class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 p-6">
-        <section class="stitch-border bg-black/50 backdrop-blur-md">
-            <h2 class="text-violet-400 mb-4 underline">CONNECT_INTERFACE</h2>
-            <ul class="space-y-4">
-                <li><a href="https://www.tiktok.com/@muslim_surgir" target="_blank" class="neon-glow">➜ TIKTOK: @muslim_surgir</a></li>
-                <li><a href="https://wa.me/2348132841588" target="_blank" class="neon-glow">➜ WHATSAPP: +234 813 284 1588</a></li>
-                <li><a href="mailto:tajudeenokikiola302@gmail.com" class="neon-glow">➜ GMAIL: tajudeenokikiola302@gmail.com</a></li>
-                <li><a href="https://facebook.com" class="neon-glow">➜ FB: Muslim Surgir</a></li>
-            </ul>
-        </section>
-
-        <section class="stitch-border flex flex-col justify-center items-center text-center">
-            <div class="animate-pulse text-violet-400">● SYSTEM ACTIVE</div>
-            <div class="mt-2">STITCH DENSITY: 98.4%</div>
-            <div class="mt-2">AUTOMATION: SYNCHRONIZED</div>
-            <div class="text-[10px] mt-4 opacity-50">GitHub Repository: Connected</div>
-        </section>
-    </main>
-
-    <script>
-        // Automation script to generate 200 reviews
-        const reviewTrack = document.getElementById('review-track');
-        const names = ["Ahmed", "John", "Olu", "Fatima", "Grace", "Ibrahim", "Zainab", "David"];
-        const feedback = ["Exceptional quality!", "Best stitches in the game.", "The futuristic vibe is real.", "Fast delivery!", "Highly recommended.", "5-Star service!"];
+"];
 
         let reviewHTML = "";
         for (let i = 0; i < 200; i++) {
