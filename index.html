@@ -3,197 +3,158 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muslimsugirr | Futuristic Tailoring</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <title>Muslim Surgir | Future Stitches</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        :root {
-            --primary: #00ffcc;
-            --bg-dark: #0a0a0a;
-            --glass: rgba(255, 255, 255, 0.1);
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;500&display=swap');
 
         body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: var(--bg-dark);
-            color: white;
+            background-color: #050505;
+            color: #50FA7B;
+            font-family: 'Fira Code', monospace;
+            font-size: 13px; /* Small, tactical text */
             overflow-x: hidden;
         }
 
-        /* Moving Stitch Background Animation */
-        .stitch-bg {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1;
+        /* Animated Stitch Border Effect */
+        .stitch-border {
+            border: 2px dashed #BD93F9;
+            position: relative;
+            padding: 20px;
+            animation: stitch-flow 10s linear infinite;
+        }
+
+        @keyframes stitch-flow {
+            0% { border-style: dashed; border-spacing: 5px; }
+            50% { border-style: dotted; }
+            100% { border-style: dashed; }
+        }
+
+        /* Review Marquee */
+        .marquee-container {
             overflow: hidden;
+            white-space: nowrap;
+            background: rgba(189, 147, 249, 0.1);
+            padding: 10px 0;
         }
 
-        .needle {
-            position: absolute;
-            color: var(--primary);
-            font-size: 24px;
-            opacity: 0.3;
-            animation: moveStitch 10s linear infinite;
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 60s linear infinite;
         }
 
-        @keyframes moveStitch {
-            0% { transform: translateY(-100px) rotate(0deg); left: 10%; }
-            100% { transform: translateY(110vh) rotate(360deg); left: 90%; }
+        @keyframes marquee {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
         }
 
-        /* Header & Hero */
-        header {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.7), var(--bg-dark)),
-                        url('https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?auto=format&fit=crop&q=80&w=2000');
-            background-size: cover;
-            border-bottom: 2px solid var(--primary);
-        }
-
-        .logo-box {
-            backdrop-filter: blur(10px);
-            background: var(--glass);
-            padding: 40px;
-            border-radius: 20px;
-            border: 1px solid var(--primary);
-            box-shadow: 0 0 20px var(--primary);
-        }
-
-        h1 { font-size: 4rem; margin: 0; letter-spacing: 5px; text-transform: uppercase; }
-        p.tagline { font-size: 1.2rem; color: var(--primary); margin-top: 10px; }
-
-        /* Review Section */
-        .reviews-container {
-            padding: 50px 20px;
-            background: #111;
-        }
-
-        .review-scroll {
-            display: flex;
-            overflow-x: auto;
-            gap: 20px;
-            padding: 20px;
-        }
-
-        .review-card {
-            min-width: 300px;
-            background: var(--glass);
-            padding: 20px;
-            border-radius: 15px;
-            border-left: 4px solid var(--primary);
-        }
-
-        .stars { color: #ffcc00; margin-bottom: 10px; }
-
-        /* Contact Grid */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            padding: 50px;
-            max-width: 1200px;
-            margin: auto;
-        }
-
-        .btn {
-            padding: 20px;
-            text-decoration: none;
-            color: white;
-            background: var(--glass);
-            border: 1px solid var(--primary);
-            border-radius: 10px;
-            text-align: center;
+        .neon-glow:hover {
+            text-shadow: 0 0 10px #50FA7B, 0 0 20px #50FA7B;
             transition: 0.3s;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
         }
 
-        .btn:hover {
-            background: var(--primary);
-            color: black;
-            box-shadow: 0 0 30px var(--primary);
-            transform: translateY(-5px);
+        /* Moving Stitch Background */
+        .bg-pattern {
+            background-image: radial-gradient(#1a1a1a 1px, transparent 1px);
+            background-size: 20px 20px;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
         }
-
-        footer { text-align: center; padding: 30px; opacity: 0.6; }
-
     </style>
 </head>
 <body>
+    <div class="bg-pattern"></div>
 
-    <div class="stitch-bg" id="stitchContainer"></div>
-
-    <header>
-        <div class="logo-box">
-            <h1>Muslimsugirr</h1>
-            <p class="tagline">A CLEAN DRESS FROM A CLEAN CUT</p>
-            <p>Ilorin, Kwara, Nigeria | Open 24 Hours</p>
-        </div>
+    <header class="p-8 text-center">
+        <h1 class="text-2xl font-bold tracking-tighter stitch-border inline-block">
+            MUSLIM SURGIR // AUTO-STITCH_v3.0
+        </h1>
+        <p class="mt-4 opacity-70 italic">"Precision Craftsmanship Meets Future Tech"</p>
     </header>
 
-    <section class="reviews-container">
-        <h2 style="text-align: center;">Verified Customer Experience (200+ Reviews)</h2>
-        <div class="review-scroll" id="reviewBox">
+    <div class="marquee-container my-10 border-y border-emerald-500/30">
+        <div class="marquee-content" id="review-track">
             </div>
-    </section>
+    </div>
 
-    <section class="contact-grid">
-        <a href="https://wa.me/2348132841588" class="btn"><i class="fab fa-whatsapp"></i> WhatsApp Me</a>
-        <a href="https://www.tiktok.com/@muslim_surgir" class="btn"><i class="fab fa-tiktok"></i> TikTok</a>
-        <a href="mailto:tajudeenokikiola302@gmail.com" class="btn"><i class="far fa-envelope"></i> Email Us</a>
-        <a href="https://facebook.com/Muslim Surgir" class="btn"><i class="fab fa-facebook"></i> Facebook</a>
-    </section>
+    <main class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 p-6">
+        <section class="stitch-border bg-black/50 backdrop-blur-md">
+            <h2 class="text-violet-400 mb-4 underline">CONNECT_INTERFACE</h2>
+            <ul class="space-y-4">
+                <li><a href="https://www.tiktok.com/@muslim_surgir" target="_blank" class="neon-glow">➜ TIKTOK: @muslim_surgir</a></li>
+                <li><a href="https://wa.me/2348132841588" target="_blank" class="neon-glow">➜ WHATSAPP: +234 813 284 1588</a></li>
+                <li><a href="mailto:tajudeenokikiola302@gmail.com" class="neon-glow">➜ GMAIL: tajudeenokikiola302@gmail.com</a></li>
+                <li><a href="https://facebook.com" class="neon-glow">➜ FB: Muslim Surgir</a></li>
+            </ul>
+        </section>
 
-    <footer>
-        <p>&copy; 2026 Muslimsugirr - Your Comfort is Our Priority</p>
-    </footer>
+        <section class="stitch-border flex flex-col justify-center items-center text-center">
+            <div class="animate-pulse text-violet-400">● SYSTEM ACTIVE</div>
+            <div class="mt-2">STITCH DENSITY: 98.4%</div>
+            <div class="mt-2">AUTOMATION: SYNCHRONIZED</div>
+            <div class="text-[10px] mt-4 opacity-50">GitHub Repository: Connected</div>
+        </section>
+    </main>
 
     <script>
-        // Generate Animated Stitches
-        const container = document.getElementById('stitchContainer');
-        for (let i = 0; i < 15; i++) {
-            let needle = document.createElement('i');
-            needle.className = 'fas fa-cut needle';
-            needle.style.left = Math.random() * 100 + 'vw';
-            needle.style.animationDelay = Math.random() * 5 + 's';
-            needle.style.fontSize = (Math.random() * 20 + 10) + 'px';
-            container.appendChild(needle);
-        }
+        // Automation script to generate 200 reviews
+        const reviewTrack = document.getElementById('review-track');
+        const names = ["Ahmed", "John", "Olu", "Fatima", "Grace", "Ibrahim", "Zainab", "David"];
+        const feedback = ["Exceptional quality!", "Best stitches in the game.", "The futuristic vibe is real.", "Fast delivery!", "Highly recommended.", "5-Star service!"];
 
-        // Generate 200 Reviews
-        const reviewBox = document.getElementById('reviewBox');
-        const names = ["Ahmad", "Bisi", "Chidi", "Fatima", "Olu", "Zainab", "Ibrahim", "Kehinde"];
-        const feedback = [
-            "The cleanest cut I've ever had!",
-            "Fast delivery and perfect fitting.",
-            "Best tailor in Ilorin, hands down.",
-            "Professional service and great communication.",
-            "The futuristic designs are mind-blowing!"
-        ];
-
-        for (let i = 1; i <= 200; i++) {
-            let div = document.createElement('div');
-            div.className = 'review-card';
-            let rName = names[Math.floor(Math.random() * names.length)];
-            let rText = feedback[Math.floor(Math.random() * feedback.length)];
-            
-            div.innerHTML = `
-                <div class="stars">★★★★★</div>
-                <strong>${rName} ${String.fromCharCode(65 + (i % 26))}.</strong>
-                <p>"${rText}"</p>
-                <small style="color:var(--primary)">Verified Order #${1000 + i}</small>
-            `;
-            reviewBox.appendChild(div);
+        let reviewHTML = "";
+        for (let i = 0; i < 200; i++) {
+            const randomName = names[Math.floor(Math.random() * names.length)];
+            const randomText = feedback[Math.floor(Math.random() * feedback.length)];
+            reviewHTML += `
+                <span class="mx-8 text-emerald-400">
+                    <strong>${randomName}:</strong> ${randomText} ⭐⭐⭐⭐⭐
+                </span>`;
         }
+        reviewTrack.innerHTML = reviewHTML + reviewHTML; // Double for seamless loop
+    </script>
+</body>
+</html>
+            </div>
+    </div>
+
+    <main class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 p-6">
+        <section class="stitch-border bg-black/50 backdrop-blur-md">
+            <h2 class="text-violet-400 mb-4 underline">CONNECT_INTERFACE</h2>
+            <ul class="space-y-4">
+                <li><a href="https://www.tiktok.com/@muslim_surgir" target="_blank" class="neon-glow">➜ TIKTOK: @muslim_surgir</a></li>
+                <li><a href="https://wa.me/2348132841588" target="_blank" class="neon-glow">➜ WHATSAPP: +234 813 284 1588</a></li>
+                <li><a href="mailto:tajudeenokikiola302@gmail.com" class="neon-glow">➜ GMAIL: tajudeenokikiola302@gmail.com</a></li>
+                <li><a href="https://facebook.com" class="neon-glow">➜ FB: Muslim Surgir</a></li>
+            </ul>
+        </section>
+
+        <section class="stitch-border flex flex-col justify-center items-center text-center">
+            <div class="animate-pulse text-violet-400">● SYSTEM ACTIVE</div>
+            <div class="mt-2">STITCH DENSITY: 98.4%</div>
+            <div class="mt-2">AUTOMATION: SYNCHRONIZED</div>
+            <div class="text-[10px] mt-4 opacity-50">GitHub Repository: Connected</div>
+        </section>
+    </main>
+
+    <script>
+        // Automation script to generate 200 reviews
+        const reviewTrack = document.getElementById('review-track');
+        const names = ["Ahmed", "John", "Olu", "Fatima", "Grace", "Ibrahim", "Zainab", "David"];
+        const feedback = ["Exceptional quality!", "Best stitches in the game.", "The futuristic vibe is real.", "Fast delivery!", "Highly recommended.", "5-Star service!"];
+
+        let reviewHTML = "";
+        for (let i = 0; i < 200; i++) {
+            const randomName = names[Math.floor(Math.random() * names.length)];
+            const randomText = feedback[Math.floor(Math.random() * feedback.length)];
+            reviewHTML += `
+                <span class="mx-8 text-emerald-400">
+                    <strong>${randomName}:</strong> ${randomText} ⭐⭐⭐⭐⭐
+                </span>`;
+        }
+        reviewTrack.innerHTML = reviewHTML + reviewHTML; // Double for seamless loop
     </script>
 </body>
 </html>
